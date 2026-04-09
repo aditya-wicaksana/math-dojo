@@ -129,7 +129,10 @@ function AppContent() {
           )}
           {screen.name === 'achievements' && <AchievementsScreen />}
           {screen.name === 'settings' && (
-            <SettingsScreen onSwitchProfile={() => go({ name: 'welcome' })} />
+            <SettingsScreen
+              onSwitchProfile={() => go({ name: 'welcome' })}
+              onBack={() => go({ name: 'home' })}
+            />
           )}
         </AppShell>
       )}

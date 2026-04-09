@@ -10,9 +10,10 @@ const APP_VERSION = '1.0.0'
 
 interface SettingsScreenProps {
   onSwitchProfile: () => void
+  onBack: () => void
 }
 
-export function SettingsScreen({ onSwitchProfile }: SettingsScreenProps) {
+export function SettingsScreen({ onSwitchProfile, onBack }: SettingsScreenProps) {
   const { t } = useLocale()
   const { store, setLocale, updateProfile } = useStore()
   const profile = store.profiles.find(p => p.id === store.activeProfileId)
@@ -29,7 +30,15 @@ export function SettingsScreen({ onSwitchProfile }: SettingsScreenProps) {
 
   return (
     <div className="flex flex-col gap-5 animate-fade-in">
-      <h2 className="text-2xl font-black text-gray-800">{t('settings.title')}</h2>
+      <div className="flex items-center gap-3">
+        <button
+          onClick={onBack}
+          className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors text-xl"
+        >
+          ←
+        </button>
+        <h2 className="text-2xl font-black text-gray-800">{t('settings.title')}</h2>
+      </div>
 
       {/* Language */}
       <div className="bg-white rounded-3xl p-4 shadow-md">
